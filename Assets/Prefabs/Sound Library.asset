@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0ebf2e613547b4d8a19431dda00791, type: 3}
+  m_Name: Sound Library
+  m_EditorClassIdentifier: 
+  Volume: 1
+  Pitch: 1
+  Library:
+  - Clip: {fileID: 8300000, guid: a367475adeddded4baee97ddeb224ed4, type: 3}
+    Name: setup
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    CreateNewInstanceOnEachPlay: 0
+    SkipNextStop: 0
+  - Clip: {fileID: 8300000, guid: 7953d266f2161914bb0ad9a164c7021c, type: 3}
+    Name: step
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    CreateNewInstanceOnEachPlay: 0
+    SkipNextStop: 0
+  - Clip: {fileID: 8300000, guid: b10c12a365814ec4da9fe0a855be621a, type: 3}
+    Name: trap
+    Volume: 1
+    Pitch: 1
+    Loop: 0
+    CreateNewInstanceOnEachPlay: 0
+    SkipNextStop: 0
