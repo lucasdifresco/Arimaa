@@ -314,8 +314,9 @@ public class BoardController : MonoBehaviour
         moves = move.ToString();
 #elif PLATFORM_ANDROID
         moves = Marshal.PtrToStringAnsi(MoveBot2(_board.Moves, 0));
+#elif PLATFORM_IOS
+        moves = Marshal.PtrToStringAnsi(MoveBot2(_board.Moves, 0));
 #endif
-
         _board.CheckWinState(moves.Trim() != "", isReapiting);
         if (_board.GameEnded) 
         {
@@ -539,6 +540,15 @@ public class BoardController : MonoBehaviour
     private static extern string MoveBot(string state, int difficulty, StringBuilder move, int length);
     [DllImport("libArimaaEngine")]
     private static extern IntPtr MoveBot2(string state, int difficulty);
+#elif PLATFORM_IOS
+    [DllImport("libArimaaIOS")]
+    private static extern void InitBot();
+    [DllImport("libArimaaIOS")]
+    private static extern void InterruptBot();
+    [DllImport("libArimaaIOS")]
+    private static extern string MoveBot(string state, int difficulty, StringBuilder move, int length);
+    [DllImport("libArimaaIOS")]
+    private static extern IntPtr MoveBot2(string state, int difficulty);
 #endif
 
     private void CheckAutoMove() 
@@ -567,6 +577,11 @@ public class BoardController : MonoBehaviour
         await Task.Run(() => { MoveBot(_board.Moves, difficulty, move, move.Capacity); }, _cancelationToken.Token);
         _moves = move.ToString().Split(" ").ToList();
 #elif PLATFORM_ANDROID
+        string moves = "";
+        await Task.Run(() => { InterruptBot(); }, _cancelationToken.Token);
+        await Task.Run(() => { moves = Marshal.PtrToStringAnsi(MoveBot2(_board.Moves, difficulty)); }, _cancelationToken.Token);
+        _moves = moves.ToString().Split(" ").ToList();
+#elif PLATFORM_IOS
         string moves = "";
         await Task.Run(() => { InterruptBot(); }, _cancelationToken.Token);
         await Task.Run(() => { moves = Marshal.PtrToStringAnsi(MoveBot2(_board.Moves, difficulty)); }, _cancelationToken.Token);
