@@ -541,13 +541,13 @@ public class BoardController : MonoBehaviour
     [DllImport("libArimaaEngine")]
     private static extern IntPtr MoveBot2(string state, int difficulty);
 #elif PLATFORM_IOS
-    [DllImport("libArimaaIOS")]
+    [DllImport("__Internal")]
     private static extern void InitBot();
-    [DllImport("libArimaaIOS")]
+    [DllImport("__Internal")]
     private static extern void InterruptBot();
-    [DllImport("libArimaaIOS")]
+    [DllImport("__Internal")]
     private static extern string MoveBot(string state, int difficulty, StringBuilder move, int length);
-    [DllImport("libArimaaIOS")]
+    [DllImport("__Internal")]
     private static extern IntPtr MoveBot2(string state, int difficulty);
 #endif
 
