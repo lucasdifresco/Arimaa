@@ -30,6 +30,8 @@ public class SettingsController : MonoBehaviour
     [SerializeField] private TMP_Dropdown _silverMode;
     [SerializeField] private TMP_Dropdown _silverLevel;
 
+    [SerializeField] private TMP_Dropdown _variant;
+
     public UnityEvent OnSave;
     public UnityEvent OnLoad;
 
@@ -85,6 +87,8 @@ public class SettingsController : MonoBehaviour
         _goldLevel.onValueChanged.AddListener((value) => { Save(); });
         _silverMode.onValueChanged.AddListener((value) => { Save(); });
         _silverLevel.onValueChanged.AddListener((value) => { Save(); });
+
+        _variant.onValueChanged.AddListener((value) => { Save(); });
     }
 
     public void UpdateFlipSetting()
@@ -107,18 +111,19 @@ public class SettingsController : MonoBehaviour
         if (Current == null)
         {
             Current = new Settings(
-            (_soundOn == null) ? false : _soundOn.isOn,
-            (_animationSpeed == null) ? 1 : _animationSpeed.value,
-            (_flip == null) ? false : _flip.isOn,
-            (_enlarge == null) ? false : _enlarge.isOn,
-            (_swipe == null) ? false : _swipe.isOn,
-            (_boardGraphics == null) ? 0 : _boardGraphics.value,
-            (_pieceGraphics == null) ? 0 : _pieceGraphics.value,
-            (_goldMode == null) ? 0 : _goldMode.value,
-            (_goldLevel == null) ? 0 : _goldLevel.value,
-            (_silverMode == null) ? 0 : _silverMode.value,
-            (_silverLevel == null) ? 0 : _silverLevel.value
-            );
+                (_soundOn == null) ? false : _soundOn.isOn,
+                (_animationSpeed == null) ? 1 : _animationSpeed.value,
+                (_flip == null) ? false : _flip.isOn,
+                (_enlarge == null) ? false : _enlarge.isOn,
+                (_swipe == null) ? false : _swipe.isOn,
+                (_boardGraphics == null) ? 0 : _boardGraphics.value,
+                (_pieceGraphics == null) ? 0 : _pieceGraphics.value,
+                (_goldMode == null) ? 0 : _goldMode.value,
+                (_goldLevel == null) ? 0 : _goldLevel.value,
+                (_silverMode == null) ? 0 : _silverMode.value,
+                (_silverLevel == null) ? 0 : _silverLevel.value,
+                (_variant == null) ? 0 : _variant.value
+                );
         }
         else 
         {        
@@ -133,7 +138,8 @@ public class SettingsController : MonoBehaviour
                 (_goldMode == null) ? Current.GoldMode : _goldMode.value,
                 (_goldLevel == null) ? Current.GoldLevel : _goldLevel.value,
                 (_silverMode == null) ? Current.SilverMode : _silverMode.value,
-                (_silverLevel == null) ? Current.SilverLevel : _silverLevel.value
+                (_silverLevel == null) ? Current.SilverLevel : _silverLevel.value,
+                (_variant == null) ? Current.Variant : _variant.value
                 );
         }
 
@@ -174,6 +180,8 @@ public class SettingsController : MonoBehaviour
         if (_silverMode != null) { _silverMode.value = Current.SilverMode; }
         if (_silverLevel != null) { _silverLevel.value = Current.SilverLevel; }
 
+        if (_variant != null) { _variant.value = Current.Variant; }
+
         OnLoad?.Invoke();
 
 #if UNITY_EDITOR
@@ -196,6 +204,8 @@ public class SettingsController : MonoBehaviour
         public int SilverMode;
         public int SilverLevel;
 
+        public int Variant;
+
         public Settings(string json) 
         {
             Settings settings = JsonUtility.FromJson<Settings>(json);
@@ -212,8 +222,10 @@ public class SettingsController : MonoBehaviour
             GoldLevel = settings.GoldLevel;
             SilverMode = settings.SilverMode;
             SilverLevel = settings.SilverLevel;
+
+            Variant = settings.Variant;
         }
-        public Settings(bool soundOn, int animationSpeed, bool flip, bool enlarge, bool swipe, int board, int piece, int goldMode, int goldLevel, int silverMode, int silverLevel)
+        public Settings(bool soundOn, int animationSpeed, bool flip, bool enlarge, bool swipe, int board, int piece, int goldMode, int goldLevel, int silverMode, int silverLevel, int variant)
         {
             SoundOn = soundOn;
             AnimationSpeed = animationSpeed;
@@ -227,6 +239,8 @@ public class SettingsController : MonoBehaviour
             GoldLevel = goldLevel;
             SilverMode = silverMode;
             SilverLevel = silverLevel;
+
+            Variant = variant;
         }
 
         public string ToJSON() { return JsonUtility.ToJson(this); }

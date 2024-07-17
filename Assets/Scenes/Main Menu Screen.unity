@@ -3458,23 +3458,23 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Regular
-      m_Image: {fileID: 0}
-    - m_Text: xEM
-      m_Image: {fileID: 0}
-    - m_Text: xEMR2
-      m_Image: {fileID: 0}
-    - m_Text: xHDCR
-      m_Image: {fileID: 0}
-    - m_Text: xEMD2R2
-      m_Image: {fileID: 0}
-    - m_Text: MHDCR4
-      m_Image: {fileID: 0}
-    - m_Text: HDCR5
+    - m_Text: C2R4
       m_Image: {fileID: 0}
     - m_Text: DCR4
       m_Image: {fileID: 0}
-    - m_Text: C2R4
+    - m_Text: HDCR5
+      m_Image: {fileID: 0}
+    - m_Text: MHDCR4
+      m_Image: {fileID: 0}
+    - m_Text: H2C2R6
+      m_Image: {fileID: 0}
+    - m_Text: xHDCR
+      m_Image: {fileID: 0}
+    - m_Text: xEMR2
+      m_Image: {fileID: 0}
+    - m_Text: xEM
+      m_Image: {fileID: 0}
+    - m_Text: ALL
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4460,7 +4460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Regular
+  m_text: C2R4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1d05dfb333330954fb80b4a713a770cd, type: 2}
   m_sharedMaterial: {fileID: 1795914330791029031, guid: 1d05dfb333330954fb80b4a713a770cd, type: 2}
@@ -8629,7 +8629,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Version 2.0, \xA9 2012 David Wu"
+  m_text: "Version 2.1, \xA9 1999-present Arimaa.com"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18566,6 +18566,7 @@ MonoBehaviour:
   _goldLevel: {fileID: 1092812270}
   _silverMode: {fileID: 1776764825}
   _silverLevel: {fileID: 692551386}
+  _variant: {fileID: 440685165}
   OnSave:
     m_PersistentCalls:
       m_Calls: []

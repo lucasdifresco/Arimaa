@@ -62,7 +62,7 @@ public class SavedGameAsset : ScriptableObject
     }
     public void LoadVariantGame(TMP_Dropdown variantDropdown)
     {
-        if (variantDropdown.value == 0) { return; }
+        if (variantDropdown.value == 8) { return; }
         HasVariantGame = true;
         _recordedGame = _variants[variantDropdown.value - 1].text;
     }
