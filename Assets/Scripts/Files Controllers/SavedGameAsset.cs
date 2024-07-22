@@ -64,7 +64,7 @@ public class SavedGameAsset : ScriptableObject
     {
         if (variantDropdown.value == 8) { return; }
         HasVariantGame = true;
-        _recordedGame = _variants[variantDropdown.value - 1].text;
+        _recordedGame = _variants[variantDropdown.value].text;
     }
     public string GetRecordedGame() { return _recordedGame; }
     public void Save(List<BoardState> history, string filename)
